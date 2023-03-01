@@ -1,0 +1,36 @@
+{
+  "schemaVersion": 1,
+  "id": "spawnradius",
+  "version": "${version}",
+
+  "name": "Configurable Spawn Radius",
+  "description": "Lets you configure the spawn radius!",
+  "authors": [
+    "NotStirred"
+  ],
+  "contact": {
+    "homepage": "https://github.com/NotStirred/spawnradius",
+    "sources": "https://github.com/NotStirred/spawnradius"
+  },
+
+  "entrypoints": {
+    "main": [
+      "io.github.notstirred.spawnradius.SpawnRadius"
+    ]
+  },
+
+  "license": "MIT",
+
+  "environment": "*",
+
+  "mixins": [
+    "spawnradius.mixins.json"
+  ],
+
+  "depends": {
+    "fabricloader": ">=0.14.8",
+    "fabric-api": "*",
+    "minecraft": ">=1.17.0",
+    "java": ">=17"
+  }
+}
