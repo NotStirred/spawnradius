@@ -17,7 +17,7 @@ public class MixinMinecraftServer {
 
 	@Redirect(method = "prepareStartRegion", at = @At(value = "INVOKE", target = "Lnet/minecraft/server/world/ServerChunkManager;addTicket(Lnet/minecraft/server/world/ChunkTicketType;Lnet/minecraft/util/math/ChunkPos;ILjava/lang/Object;)V"), require = 1)
 	private <T> void replaceRegionTicketRadius(ServerChunkManager instance, ChunkTicketType<T> ticketType, ChunkPos pos, int radius, T unit) {
-		if (SpawnRadius.RADIUS != 0) {
+		if (SpawnRadius.RADIUS > 0) {
 			instance.addTicket(ticketType, pos, SpawnRadius.RADIUS, unit);
 		}
 		SpawnRadius.LOGGER.info("Replaced SPAWN ticket with radius: " + SpawnRadius.RADIUS);
@@ -31,7 +31,7 @@ public class MixinMinecraftServer {
 	}
 
 	private static int calculateRequiredChunksCount(int radius) {
-		if (radius == 0) {
+		if (radius < 0) {
 			SpawnRadius.LOGGER.info("Replaced required chunks to load with: " + 0);
 			return 0;
 		}

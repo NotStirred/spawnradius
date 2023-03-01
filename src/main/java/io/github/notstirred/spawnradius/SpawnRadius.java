@@ -28,7 +28,7 @@ public class SpawnRadius implements ModInitializer {
 
         try {
             JsonElement parsed = JsonParser.parseReader(new FileReader(configPath.toFile()));
-            RADIUS = parsed.getAsJsonObject().get("radius").getAsInt();
+            RADIUS = Math.max(0, parsed.getAsJsonObject().get("radius").getAsInt());
         } catch (Throwable t) {
             LOGGER.error(String.format("Failed to set config values from file: %s", configPath), t);
         }
