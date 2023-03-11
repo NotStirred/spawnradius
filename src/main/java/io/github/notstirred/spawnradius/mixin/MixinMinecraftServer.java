@@ -31,7 +31,7 @@ public class MixinMinecraftServer {
 	}
 
 	private static int calculateRequiredChunksCount(int radius) {
-		if (radius < 0) {
+		if (radius <= 0) {
 			SpawnRadius.LOGGER.info("Replaced required chunks to load with: " + 0);
 			return 0;
 		}
